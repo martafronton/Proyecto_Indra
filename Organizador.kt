@@ -3,22 +3,29 @@ class Organizador {
     var correo=""
     var listaEventos=ArrayList<Evento>()
 
+
     constructor()
     constructor(nombre: String, correo: String) {
         this.nombre = nombre
         this.correo = correo
     }
 
-
     fun organizarEvento(nombre: String, fecha: Int, ubicacion: Ubicacion, categoria:Categoria, organizador: Organizador):Evento{
-        var evento=Evento(nombre,fecha,ubicacion,categoria, organizador)
+        var evento=Evento(nombre,fecha,ubicacion,categoria, organizador, 100)
         listaEventos.add(evento)
         return evento
     }
-    fun modificarEvento(nuevoNombre:String, nuevaFecha:Int, nuevaUbicacion:Ubicacion, nuevaCategoria:Categoria,nuevoOrganizador:Organizador):Evento{
-        return Evento(nuevoNombre, nuevaFecha, nuevaUbicacion, nuevaCategoria, nuevoOrganizador)
+    fun modificarEvento(nuevoNombre:String, nuevaFecha:Int, nuevaUbicacion:Ubicacion, nuevaCategoria:Categoria,nuevoOrganizador:Organizador){
+        Evento(nuevoNombre, nuevaFecha, nuevaUbicacion, nuevaCategoria, nuevoOrganizador, 100)
     }
-    fun eliminarEvento(evento:Evento){
-        listaEventos.remove(evento)
+    fun cancelarEvento(evento:Evento){
+        for(i in listaEventos.indices) {
+            if (listaEventos[i]==evento){
+                listaEventos.remove(evento)
+            }
+        }
+    }
+    override fun toString(): String {
+        return "Nombre: $nombre, Eventos con nosotros:${listaEventos.size}"
     }
 }
