@@ -1,24 +1,24 @@
 create table USUARIO(
-id_usuario number(6)primary key,
+id_usuario number(6) generated always as identity primary key,
 nombre varchar2(20)not null,
 correo_electronico varchar2(40)not null,
 contrasenia varchar2(20)not null
 );
 
 create table UBICACION (
-id_ubicacion number(6) primary key,
+id_ubicacion number(6)generated always as identity primary key,
 presencial varchar2(10) not null,
 direccion varchar2(30),
 enlace varchar2(2048)
 );
 create table CATEGORIA(
-id_categoria number(2)primary key,
+id_categoria number(2)generated always as identity primary key,
 nombre varchar2(20) not null,
 Descripcion varchar2(250)
 );
 
 create table ORGANIZADOR(
-id_organizador number(6)primary key,
+id_organizador number(6)generated always as identity primary key,
 nombre varchar2(25) not null,
 correo_electronico number(30) not null
 );
@@ -31,7 +31,7 @@ primary key(id_organizador, telefono)
 );
 
 create table EVENTO (
-id_evento number(6) primary key,
+id_evento number(6) generated always as identity primary key,
 nombre varchar2(20)not null,
 fecha date not null,
 hora number(2,2)not null,
